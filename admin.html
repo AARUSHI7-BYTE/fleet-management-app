@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <style>
-        main{
+        .card{
             align-items: center;
+            margin: 60px 10px 20px 30px;
         }
         body{
             background-color: white;
@@ -21,21 +22,21 @@
             align-content: center;
             gap: 40px;
             width: 100vw;
-            margin: 0px 10px -10px 0px;
+            margin: 10px 10px -10px 0px;
             height: 7vh;
             background-color: rgb(120, 117, 117);
         }
         .aside{
             background-color: rgb(17, 16, 16);
-            height: 50vh;
+            height: 100vh;
             color: white;
+            margin-top: 20px;
         }
         
     </style>
 </head>
 
 <body>
-        <div class="box">
             <nav>
                 <select name="" id="selection">
                     <option value="">Category Filter</option>
@@ -52,6 +53,7 @@
                 </select>
                 <button>Clear Filter</button>
             </nav>
+            <div class="box">
             <div class="aside">
                 <h1>ADD FLEET</h1>
                 <input type="text" placeholder="Reg No of Vehicle" id="reg">
@@ -73,11 +75,11 @@
                 <br><br>
                 <button onclick="fleet()">Add Fleet</button>
 
-            </div>
         </div>
            <div class="main">
                 <div class="main" id="card">
                 </div>
+            </div>
             </div>
 </body>
 <script>
@@ -99,14 +101,18 @@
            <h3>Category : ${category}</h3>
            <h3>Driver: ${driver}</h3>
            <h3>Status : ${status}</h3>
-           <button onclick="update()"> Update driver </button>
-           <button> Change Availablity </button>
+           <button> Update driver </button>
+           <button onclick="update()"> Change Availablity </button>
            <button> Update Delete Vehicle </button>
-
            `;
         }
         function update(){
-            
+            if(status==available){
+                document.changing.textContent="Unavailable";
+            }
+            else{
+                document.changing.textContent="available";
+            }
         }
     }
 </script>
