@@ -6,12 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <style>
+        main{
+            align-items: center;
+        }
         body{
             background-color: white;
         }
         .box{
             display: flex;
-
         }
         nav{
             display: flex;
@@ -23,9 +25,9 @@
             height: 7vh;
             background-color: rgb(120, 117, 117);
         }
-        aside{
+        .aside{
             background-color: rgb(17, 16, 16);
-            height: 100vh;
+            height: 50vh;
             color: white;
         }
         
@@ -33,7 +35,6 @@
 </head>
 
 <body>
-    <div class="container">
         <div class="box">
             <nav>
                 <select name="" id="selection">
@@ -51,7 +52,7 @@
                 </select>
                 <button>Clear Filter</button>
             </nav>
-            <aside>
+            <div class="aside">
                 <h1>ADD FLEET</h1>
                 <input type="text" placeholder="Reg No of Vehicle" id="reg">
                 <br><br>
@@ -72,12 +73,12 @@
                 <br><br>
                 <button onclick="fleet()">Add Fleet</button>
 
-            </aside>
-            <main>
-
-            </main>
+            </div>
         </div>
-    </div>
+           <div class="main">
+                <div class="main" id="card">
+                </div>
+            </div>
 </body>
 <script>
     function fleet(){
@@ -86,7 +87,25 @@
         let driver = document.getElementById("driver").value;
         let status = document.getElementById("status").value;
 
-        if(regno || category || driver || status!=null){
+        if(!regno || !category || !driver || !status){
+            alert("please fill required details");
+        }
+        else{
+           let i= document.getElementById("card");
+           i.style.alignContent=document.center;
+           i.innerHTML=`
+           <img src="https://coding-platform.s3.amazonaws.com/dev/lms/tickets/5e80fcb6-3f8e-480c-945b-30a5359eb40e/JNmYjkVr3WOjsrbu.png" alt="" width="200px" height="100px">
+           <h3>Reg no : ${regno}</h3>
+           <h3>Category : ${category}</h3>
+           <h3>Driver: ${driver}</h3>
+           <h3>Status : ${status}</h3>
+           <button onclick="update()"> Update driver </button>
+           <button> Change Availablity </button>
+           <button> Update Delete Vehicle </button>
+
+           `;
+        }
+        function update(){
             
         }
     }
